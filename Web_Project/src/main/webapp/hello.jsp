@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!--  -->
 <%for(int i=0;i<=10;i++) {%>
-<h<%=i%>><%=i%> hello world</h<%=i%>>
-<%} %>>
+<h1><%=i%> hello world</h1>
+
+<%} %>
 </body>
 </html>
