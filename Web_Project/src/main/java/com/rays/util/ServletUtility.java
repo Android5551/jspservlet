@@ -1,6 +1,7 @@
 package com.rays.util;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,6 +16,15 @@ public class ServletUtility {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public static String getErrorMessage(String key,HttpServletRequest request) {
+		// type casting
+		String val = (String) request.getAttribute(key);
+		if (val != null) {
+			return val;
+		}
+		return "";
 	}
 
 }

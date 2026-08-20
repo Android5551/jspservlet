@@ -11,31 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.rays.bean.UserBean;
 import com.rays.model.UserModel;
-import com.rays.util.InputValidatorUtility;
 import com.rays.util.ServletUtility;
 
-@WebServlet("/UserRegistrationCtl")
-public class UserRegistrationCtl extends HttpServlet {
-	
-	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("request method ->" + req.getMethod());
-		if(req.getMethod().equalsIgnoreCase("POST")) {
-			if(InputValidatorUtility.userValidator(req) == false) {
-				ServletUtility.forward("UserRegistrationView.jsp", req, resp);
-			return;
-			}
-		}
-		super.service(req, resp);
-	}
-
+@WebServlet("/UserCtl")
+public class UserCtl extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		System.out.println("this is doGet() method");
 
-		ServletUtility.forward("UserRegistrationView.jsp", request, response);
+		ServletUtility.forward("UserView.jsp", request, response);
 
 	}
 
@@ -65,14 +51,14 @@ public class UserRegistrationCtl extends HttpServlet {
 			bean.setDob(sdf.parse(dob));
 			model.add(bean);
 
-			request.setAttribute("successMsg", "user registration successfully");
+			request.setAttribute("successMsg", "user saved successfully");
 
 		} catch (Exception e) {
 			request.setAttribute("errorMsg", "loginId already exist");
 			e.printStackTrace();
 		}
 
-		ServletUtility.forward("UserRegistrationView.jsp", request, response);
+		ServletUtility.forward("UserView.jsp", request, response);
 
 	}
 

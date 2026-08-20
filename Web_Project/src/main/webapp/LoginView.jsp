@@ -1,3 +1,4 @@
+<%@page import="com.rays.util.ServletUtility"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -26,7 +27,8 @@
 					<th>Login:<font color="red">*</font></th>
 					<td><input type="email" name="login" value=""
 						placeholder="enter you email"></td>
-					<td style="color: red"><%=request.getAttribute("login") != null ? request.getAttribute("login") : ""%></td>
+					<%-- <td style="color: red"><%=request.getAttribute("login") != null ? request.getAttribute("login") : ""%></td> --%>
+					<td style="color: red"><%=ServletUtility.getErrorMessage("login", request)%></td>
 				</tr>
 
 				<tr>
@@ -34,6 +36,7 @@
 					<td><input type="password" name="password" value=""
 						placeholder="enter you password"></td>
 					<td style="color: red"><%=request.getAttribute("password") != null ? request.getAttribute("password") : ""%></td>
+				<td style="color: red"><%=ServletUtility.getErrorMessage("login", request)%></td>
 				</tr>
 
 				<tr>
