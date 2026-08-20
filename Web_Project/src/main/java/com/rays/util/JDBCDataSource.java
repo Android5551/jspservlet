@@ -1,11 +1,11 @@
 package com.rays.util;
 
 import java.sql.Connection;
+
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
-
 //step1. make class final so child can not be created.
 //step2. make self type of static variable, static variable have one
 // copy/memory in life time.
