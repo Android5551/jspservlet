@@ -17,17 +17,17 @@ import com.rays.util.ServletUtility;
 @WebServlet("/UserRegistrationCtl")
 public class UserRegistrationCtl extends HttpServlet {
 	
-	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("request method ->" + req.getMethod());
-		if(req.getMethod().equalsIgnoreCase("POST")) {
-			if(InputValidatorUtility.userValidator(req) == false) {
-				ServletUtility.forward("UserRegistrationView.jsp", req, resp);
-			return;
-			}
-		}
-		super.service(req, resp);
-	}
+//	@Override
+//	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		System.out.println("request method ->" + req.getMethod());
+//		if(req.getMethod().equalsIgnoreCase("POST")) {
+//			if(InputValidatorUtility.userValidator(req) == false) {
+//				ServletUtility.forward("UserRegistrationView.jsp", req, resp);
+//			return;
+//			}
+//		}
+//		super.service(req, resp);
+//	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

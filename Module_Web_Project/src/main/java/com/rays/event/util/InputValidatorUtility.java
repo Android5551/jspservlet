@@ -128,5 +128,116 @@ public class InputValidatorUtility {
 		
 		return pass;
 	}
-
-}
+	
+	// Vehicle validator
+		public static boolean vehicleValidator(HttpServletRequest request) {
+		
+			
+//			private long vehicleId;
+//			private String vehicleName;
+//			private String model;
+//			private String color;
+//			private double price;
+			
+			String vehicleName = request.getParameter("vehicleName");
+			String model = request.getParameter("model");
+			String color = request.getParameter("color");
+			String price = request.getParameter("price");
+			
+			//set pass to true
+			boolean pass = true;
+			
+			if (vehicleName.equals("")) {
+				pass = false;
+				request.setAttribute("vehicleName", "vehicleName is required");
+			}
+			else if (!vehicleName.matches("[A-Z a-z ]+")) {
+				pass = false;
+				request.setAttribute("vehicleName", "vehicleName must be in alphabets");
+			}
+			if (model.equals("")) {
+				pass = false;
+				request.setAttribute("model", "model is required");
+			}
+			else if (!model.matches("[A-Z a-z ]+")) {
+				pass = false;
+				request.setAttribute("model", "model must be in alphabets");
+			}
+			
+			if (color.equals("")) {
+				pass = false;
+				request.setAttribute("color", "color is required");
+			}
+			else if (!color.matches("[A-Z a-z ]+")) {
+				pass = false;
+				request.setAttribute("color", "color must be in alphabets");
+			}
+			if (price.equals("")) {
+				pass = false;
+				request.setAttribute("price", "price is required");
+			}
+			else if (price.matches("[A-Z a-z ]+")) {
+				pass = false;
+				request.setAttribute("price", "price must be in numericals");
+			}
+			
+			return pass;
+		}
+		
+//		// Doctor validator
+//				public static boolean doctorValidator(HttpServletRequest request) {
+//				
+//					
+////					private long doctorId;
+////					private String doctorName;
+////					private String specialization;
+////					private int experience;
+////					private String contactNo;
+//					
+//					String doctorName = request.getParameter("doctorName");
+//					String specialization = request.getParameter("specialization");
+//					String experience = request.getParameter("experience");
+//					String contactNo = request.getParameter("contactNo");
+//					
+//					
+//					//set pass to true
+//					boolean pass = true;
+//					
+//					if (doctorName.equals("")) {
+//						pass = false;
+//						request.setAttribute("doctorName", "doctorName is required");
+//					}
+//					else if (!doctorName.matches("[A-Z a-z ]+")) {
+//						pass = false;
+//						request.setAttribute("doctorName", "doctorName must be in alphabets");
+//					}
+//					if (model.equals("")) {
+//						pass = false;
+//						request.setAttribute("model", "model is required");
+//					}
+//					else if (!model.matches("[A-Z a-z ]+")) {
+//						pass = false;
+//						request.setAttribute("model", "model must be in alphabets");
+//					}
+//					
+//					if (color.equals("")) {
+//						pass = false;
+//						request.setAttribute("color", "color is required");
+//					}
+//					else if (!color.matches("[A-Z a-z ]+")) {
+//						pass = false;
+//						request.setAttribute("color", "color must be in alphabets");
+//					}
+//					if (price.equals("")) {
+//						pass = false;
+//						request.setAttribute("price", "price is required");
+//					}
+//					else if (price.matches("[A-Z a-z ]+")) {
+//						pass = false;
+//						request.setAttribute("price", "price must be in numericals");
+//					}
+//					
+//					return pass;
+//				}
+//
+		}

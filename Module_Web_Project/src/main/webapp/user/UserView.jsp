@@ -13,43 +13,43 @@
 	%>
 
 	<%@ include file="/common/header.jsp"%>
-	<form action="UserCtl" method="post">
+	<form action="UserCtl.do" method="post">
 
 		<div align="center">
 
 			<h1 class="text">Add User</h1>
 
 			<h3 style="color: green"><%=succ != null ? succ : ""%></h3>
-			<h3 style="color: red"><%=err != null ? err : ""%></h3>
+			<h3 style="color: #ff6b6b"><%=err != null ? err : ""%></h3>
 
 			<table class="form-table">
 
 				<tr>
-					<th class="greeting">First Name:<font color="red">*</font></th>
+					<th class="greeting">First Name:<font color="#ff6b6b">*</font></th>
 					<td><input type="text" name="firstName" value=""
 						placeholder="enter firstName"></td>
 				</tr>
 
 				<tr>
-					<th class="greeting">Last Name:<font color="red">*</font></th>
+					<th class="greeting">Last Name:<font color="#ff6b6b">*</font></th>
 					<td><input type="text" name="lastName" value=""
 						placeholder="enter lastName"></td>
 				</tr>
 
 				<tr>
-					<th class="greeting">Login:<font color="red">*</font></th>
+					<th class="greeting">Login:<font color="#ff6b6b">*</font></th>
 					<td><input type="email" name="login" value=""
 						placeholder="enter you email"></td>
 				</tr>
 
 				<tr>
-					<th class="greeting">Password:<font color="red">*</font></th>
+					<th class="greeting">Password:<font color="#ff6b6b">*</font></th>
 					<td><input type="password" name="password" value=""
 						placeholder="enter you password"></td>
 				</tr>
 
 				<tr>
-					<th class="greeting">Dob:<font color="red">*</font></th>
+					<th class="greeting">Dob:<font color="#ff6b6b">*</font></th>
 					<td><input type="date" name="dob" value=""></td>
 				</tr>
 

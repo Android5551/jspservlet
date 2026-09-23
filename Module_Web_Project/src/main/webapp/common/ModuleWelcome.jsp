@@ -14,12 +14,7 @@
     String listUrl = request.getParameter("listUrl");
     String addUrl = request.getParameter("addUrl");
 %>
-<%-- <div align = "center" class = "greeting" ><h1>Welcome To <%= moduleName %> Management System</h1></div>
 
-
-<a href="<%=request.getContextPath()%>/<%= listUrl %>"><%= moduleName %> List</a>
-|
-<a href="<%=request.getContextPath()%>/<%= addUrl %>">Add <%= moduleName %></a> --%>
 <div class="module-container">
 
     <h1><%= moduleName %> Management</h1>

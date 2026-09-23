@@ -21,25 +21,25 @@
 
 			<h1 class = "text">Login</h1>
 
-			<h3 style="color: red"><%=err != null ? err : ""%></h3>
+			<h3 style="color: #ff6b6b"><%=err != null ? err : ""%></h3>
 			<h3 style="color: green"><%=succ != null ? succ : ""%></h3>
 
 			<table class="form-table">
 				<tr>
-					<th class = "greeting">Login:<font color="red">*</font></th>
+					<th class = "greeting">Login:<font color="#ff6b6b">*</font></th>
 					
 					<td><input type="email" name="login" value=""
 						placeholder="enter you email"></td>
-					<%-- <td style="color: red"><%=request.getAttribute("login") != null ? request.getAttribute("login") : ""%></td> --%>
-					<td style="color: red"><%=ServletUtility.getErrorMessage("login", request)%></td>
+					<%-- <td style="color: #ff6b6b"><%=request.getAttribute("login") != null ? request.getAttribute("login") : ""%></td> --%>
+					<td style="color: #ff6b6b"><%=ServletUtility.getErrorMessage("login", request)%></td>
 				</tr>
 
 				<tr>
-					<th class = "greeting">Password:<font color="red">*</font></th>
+					<th class = "greeting">Password:<font color="#ff6b6b">*</font></th>
 					<td><input type="password" name="password" value=""
 						placeholder="enter you password"></td>
-					<td style="color: red"><%=request.getAttribute("password") != null ? request.getAttribute("password") : ""%></td>
-				<td style="color: red"><%=ServletUtility.getErrorMessage("login", request)%></td>
+					<td style="color: #ff6b6b"><%=request.getAttribute("password") != null ? request.getAttribute("password") : ""%></td>
+				<td style="color: #ff6b6b"><%=ServletUtility.getErrorMessage("login", request)%></td>
 				</tr>
 
 				<tr>

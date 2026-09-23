@@ -12,8 +12,9 @@
 <body>
 	<%
 String uri = request.getRequestURI();
+	/* add module */
 boolean homeActive = uri.endsWith("WelcomeView.jsp") || uri.endsWith("WelcomeCtl");
-boolean modulesActive = uri.contains("Event") || uri.contains("User");
+boolean modulesActive = uri.contains("Event") || uri.contains("User") || uri.contains("Vehicle");
 boolean loginActive = uri.contains("LoginView.jsp") || uri.contains("LoginCtl");
 boolean userRegistrationActive = uri.contains("UserRegistrationView.jsp") || uri.contains("UserRegistrationCtl");
 %>
@@ -47,12 +48,15 @@ boolean userRegistrationActive = uri.contains("UserRegistrationView.jsp") || uri
 
 
 				<div class="dropdown-content">
-
+					<!-- add module -->
 					<a
 						href="<%=request.getContextPath()%>/common/ModuleWelcome.jsp?moduleName=Event&listUrl=EventListCtl&addUrl=EventCtl">
-						Event </a> <a
-						href="<%=request.getContextPath()%>/common/ModuleWelcome.jsp?moduleName=User&listUrl=UserListCtl&addUrl=UserCtl">
+						Event </a>  <a
+						href="<%=request.getContextPath()%>/common/ModuleWelcome.jsp?moduleName=User&listUrl=UserListCtl.do&addUrl=UserCtl.do">
 						User </a>
+						<a
+						href="<%=request.getContextPath()%>/common/ModuleWelcome.jsp?moduleName=Vehicle&listUrl=VehicleListCtl&addUrl=VehicleCtl">
+						Vehicle </a>
 
 				</div>
 			</div>
@@ -72,9 +76,7 @@ boolean userRegistrationActive = uri.contains("UserRegistrationView.jsp") || uri
 
 		<div class="nav">
 
-			<!-- <a href="WelcomeCtl" class="active">Home</a> | <a href="LoginCtl"
-				class="active">Login</a> | <a href="UserRegistrationCtl"
-				class="active">SignUp</a> -->
+		
 
 			<a href="<%=request.getContextPath()%>/WelcomeCtl"
 				class="<%=homeActive ? "active" : ""%>"> Home </a> <a

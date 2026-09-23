@@ -13,16 +13,22 @@ import com.rays.event.bean.UserBean;
 import com.rays.event.model.UserModel;
 import com.rays.event.util.ServletUtility;
 
-@WebServlet("/UserListCtl")
+@WebServlet("/UserListCtl.do")
 public class UserListCtl extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	UserModel m = new UserModel();
 	UserBean b = new UserBean();
+	int pageNo = 1;
+	int pageSize = 5;
 	
 	try {
-		List <UserBean> l = m.search(b, 1, 20);
+//		List <UserBean> l = m.search(b, 1, 5);
+		List <UserBean> l = m.search(b, pageNo, pageSize);
+		
 		request.setAttribute("list", l);
+		request.setAttribute("pageNo", pageNo);
+		
 		
 	}catch(Exception e) {
 		e.getStackTrace();
@@ -33,7 +39,53 @@ public class UserListCtl extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		UserModel model = new UserModel();
+		UserBean bean = new UserBean();
+		int pageNo = 1;
+		int pageSize = 5;
 
+		String op = request.getParameter("operation");
+		String[] ids = request.getParameterValues("ids");
+
+		if (op.equals("delete")) {
+			if (ids != null && ids.length > 0) {
+
+				for (String id : ids) {
+					try {
+						model.delete(Integer.parseInt(id));
+						request.setAttribute("successMsg", "record deleted successfully");
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+
+			} else {
+				request.setAttribute("errorMsg", "select at least one record to delete");
+			}
+		}
+
+		if (op.equals("search")) {
+			bean.setFirstName(request.getParameter("firstName"));
+			bean.setLastName(request.getParameter("lastName"));
+		}
+
+		if (op.equals("previous")) {
+			pageNo = Integer.parseInt(request.getParameter("pageNo"));
+			pageNo--;
+		}
+
+		if (op.equals("next")) {
+			pageNo = Integer.parseInt(request.getParameter("pageNo"));
+			pageNo++;
+		}
+
+		try {
+//			List<UserBean> list = model.search(bean, 1, 5);
+			List<UserBean> list = model.search(bean, pageNo, pageSize);
+			request.setAttribute("list", list);
+			request.setAttribute("pageNo", pageNo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-
-}
+	}
