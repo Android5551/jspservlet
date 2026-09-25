@@ -13,8 +13,8 @@
 
 <%
 List <UserBean> l = (List <UserBean>) request.getAttribute("list");
-request.getAttribute("");
-
+int pageSize = (int) request.getAttribute("pageSize");
+int pageNo = (int) request.getAttribute("pageNo");
 
 %>
 </body>
