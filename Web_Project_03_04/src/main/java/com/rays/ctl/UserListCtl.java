@@ -29,6 +29,7 @@ public class UserListCtl extends HttpServlet {
 		
 		
 		
+		
 		RequestDispatcher r = req.getRequestDispatcher("UserListView.jsp");
 		
 		r.forward(req, resp);
@@ -37,6 +38,10 @@ public class UserListCtl extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		UserModel m = new UserModel();
+		UserBean b = new UserBean();
+		int pageNo = 1;
+		int pageSize = 5;
 		
 	}
 }
