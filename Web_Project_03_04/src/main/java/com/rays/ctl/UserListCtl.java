@@ -27,9 +27,6 @@ public class UserListCtl extends HttpServlet {
 		req.setAttribute("pageSize",pageSize);
 		req.setAttribute("list",l);
 		
-		
-		
-		
 		RequestDispatcher r = req.getRequestDispatcher("UserListView.jsp");
 		
 		r.forward(req, resp);
