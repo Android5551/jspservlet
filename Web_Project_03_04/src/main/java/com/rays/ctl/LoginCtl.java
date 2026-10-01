@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.rays.bean.UserBean;
 import com.rays.model.UserModel;
+import com.rays.util.ServletUtility;
 
 @WebServlet("/LoginCtl")
 public class LoginCtl extends HttpServlet {
@@ -52,7 +53,8 @@ public class LoginCtl extends HttpServlet {
 				* conflicted and we get 500 error */ 
 				
 			} else {
-				req.setAttribute("err", "Invalid Login Credentials!");
+//				req.setAttribute("err", "Invalid Login Credentials!");
+				ServletUtility.setErrMsg("Invalid Login Credentials", req);
 			}
 			
 		} catch (Exception e) {
