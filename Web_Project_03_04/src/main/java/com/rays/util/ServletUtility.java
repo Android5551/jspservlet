@@ -37,7 +37,7 @@ public class ServletUtility {
 	}
 	// Forward to Controller's own view
 	public static void forward(String page, HttpServletRequest req, HttpServletResponse res) {
-		RequestDispatcher rd = req.getRequestDispatcher("UserRegistrationView.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher(page);
 		try {
 		rd.forward(req, res); // forward method used to forward same request to it's own view
 		} catch(Exception e) {
