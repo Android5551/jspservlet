@@ -1,6 +1,7 @@
 package com.rays.ctl;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.rays.bean.UserBean;
 import com.rays.model.UserModel;
+import com.rays.util.ServletUtility;
+
 @WebServlet("/UserListCtl")
 public class UserListCtl extends HttpServlet {
 	@Override
@@ -21,26 +24,51 @@ public class UserListCtl extends HttpServlet {
 		
 		int pageNo = 1;
 		int pageSize = 5;
-		// b is null
+		
 		List<UserBean> l= m.search(b, pageNo, pageSize);
-		System.out.println(l.size());
+		System.out.println("List Size in doGet "+l.size());
 		req.setAttribute("pageNo",pageNo);
 		req.setAttribute("pageSize",pageSize);
 		req.setAttribute("list",l);
 		
-		RequestDispatcher r = req.getRequestDispatcher("UserListView.jsp");
-		System.out.println("in userlistctl do get");
-		r.forward(req, resp);
+		ServletUtility.forward("UserListView.jsp", req, resp);
 		
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String op = req.getParameter("operation");
 		UserModel m = new UserModel();
 		UserBean b = new UserBean();
-		System.out.println("in userlistctl do post");
 		int pageNo = 1;
 		int pageSize = 5;
+		System.out.println(op);
+		if("next".equals(op)) {
+			pageNo = Integer.parseInt(req.getParameter("pageNo"));
+			System.out.println("PageNo. in doPost "+pageNo);
+			pageNo++;
+		}
+		if(op == "previous") {
+			pageNo = Integer.parseInt(req.getParameter("pageNo"));
+			System.out.println("PageNo. in doPost "+pageNo);
+			pageNo--;
+		}
+		
+//	 	List<UserBean> l = m.search(b, 1, 5);  So every time you click Next, you're asking the database for page 1 again.
+	 	List<UserBean> l = m.search(b, pageNo, pageSize); 
+	 	Iterator<UserBean> i = l.iterator();
+	 	while(i.hasNext()) {
+	 		b = i.next();
+	 		System.out.println(b.getFirstName());
+	 	}
+	 	System.out.println("List Size in doPost "+l.size());
+	 	
+	 	req.setAttribute("list",l);
+	 	req.setAttribute("pageNo", pageNo);
+	 	req.setAttribute("pageSize", pageSize);
+	 	
+	 	ServletUtility.forward("UserListView.jsp", req, resp);
+	 	
 		
 	}
 }

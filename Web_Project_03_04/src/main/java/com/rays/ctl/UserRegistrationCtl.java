@@ -12,15 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.rays.bean.UserBean;
 import com.rays.model.UserModel;
+import com.rays.util.ServletUtility;
 
 @WebServlet("/UserRegistrationCtl")
 public class UserRegistrationCtl extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("in do get method");
-		RequestDispatcher rd = req.getRequestDispatcher("UserRegistrationView.jsp");
-		rd.forward(req, resp); // forward method used to forward same request to it's own view
-
+//		RequestDispatcher rd = req.getRequestDispatcher("UserRegistrationView.jsp");
+//		rd.forward(req, resp); // forward method used to forward same request to it's own view
+		
+		ServletUtility.forward("UserRegistrationView.jsp", req, resp);
 	}
 
 	@Override
@@ -28,7 +30,7 @@ public class UserRegistrationCtl extends HttpServlet {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		UserBean bean = new UserBean();
 		UserModel model = new UserModel();
-
+		
 		String firstName = r.getParameter("firstName");
 		String lastName = r.getParameter("lastName");
 		String login = r.getParameter("login");
@@ -46,10 +48,12 @@ public class UserRegistrationCtl extends HttpServlet {
 			bean.setDob(sdf.parse(dob));
 
 			model.add(bean);
-			r.setAttribute("succ", "Success");
+//			r.setAttribute("succ", "Success");
+			ServletUtility.setSuccMsg("Success", r);
 
 		} catch (Exception e) {
-			r.setAttribute("err", "Fail");
+//			r.setAttribute("err", "Fail");
+			ServletUtility.setErrMsg("Login Already Exist", r);
 			e.printStackTrace();
 		}
 		System.out.println("in do post method");

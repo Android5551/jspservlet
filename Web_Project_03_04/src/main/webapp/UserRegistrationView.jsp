@@ -1,3 +1,4 @@
+<%@page import="com.rays.util.ServletUtility"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,13 +10,16 @@
 <body>
 <%@include file="Header.jsp" %>
 <%
-String succ = (String) request.getAttribute("succ"); 
-String err = (String) request.getAttribute("err"); 
+/* String succ = (String) request.getAttribute("succ"); 
+String err = (String) request.getAttribute("err");  */
+String succ = ServletUtility.getSuccMsg(request);
+String err = ServletUtility.getErrMsg(request);
+
 %>
 	<div align="center">
 		<h1>User Registration</h1>
-		<h2 style="color:green"><%=succ != null ? succ : "" %></h2>
-		<h2 style="color:red"><%=err != null ? err : "" %></h2>
+		<h2 style="color:green"><%=succ%></h2>
+		<h2 style="color:red"><%=err%></h2>
 		<form action="UserRegistrationCtl" method="post">
 			<table>
 				<tr>
